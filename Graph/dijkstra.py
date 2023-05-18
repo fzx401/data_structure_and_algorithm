@@ -1,6 +1,10 @@
-
 class Dijkstra:
-    def dijstra(self, start, g):
+    def dijstra(self, start: str, g: dict) -> dict:
+        """
+        :param start: Node(str)
+        :param g:Graph(dict)
+        :return:Graph(dict)
+        """
         # 首先罗列出所有涉及到的点
         nodes = list(g.keys())
         diss = {n: float("inf") for n in g.keys()}
@@ -9,7 +13,7 @@ class Dijkstra:
 
         while len(visited) < len(g):
             #  每轮贪心搜索，从距离起点最近且不在已访问节点的点中找出距离最短的作为探索节点
-            current_node = min([node for node in nodes if node not in visited], key=lambda x: diss[x])
+            current_node = min([n for n in nodes if n not in visited], key=lambda x: diss[x])
             visited.append(current_node)
             for ne in g[current_node].keys():
                 dis = diss[current_node] + g[current_node][ne]
