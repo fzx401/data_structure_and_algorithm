@@ -7,9 +7,7 @@ class BubbleSort:
         for i in range(len(array) - 1):  # i代表循环的轮数
             for j in range(0, len(array) - i - 1):  # j代表从位置0开始到已确定的第i大的值之前的位置
                 if array[j] > array[j + 1]:
-                    temp = array[j]
-                    array[j] = array[j + 1]
-                    array[j + 1] = temp
+                    array[j], array[j+1] = array[j+1], array[j]  # 复杂度为1
         return "The result of bubble sort is {}".format(array)
 
 
