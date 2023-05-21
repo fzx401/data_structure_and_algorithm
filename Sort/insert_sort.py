@@ -1,3 +1,6 @@
+"""
+插入排序算法：保证在前n个数字位置上是有序的，有序顺序为从前往后（冒泡是从后往前）
+"""
 class InsertSort:
     def __init__(self):
         pass

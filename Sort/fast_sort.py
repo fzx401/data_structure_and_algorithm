@@ -12,7 +12,8 @@ class FastSort:
         left_pivot = [nums[i] for i in range(len(nums)) if nums[i] < pivot]
         middle = [nums[i] for i in range(len(nums)) if nums[i] == pivot]
         right_pivot = [nums[i] for i in range(len(nums)) if nums[i] > pivot]
-        return self.fast_sort(left_pivot) + middle + self.fast_sort(right_pivot)
+        tmp = self.fast_sort(left_pivot) + middle + self.fast_sort(right_pivot)
+        return tmp
 
 s = FastSort()
 print(s.fast_sort([2, 1, 4, 2, 5]))

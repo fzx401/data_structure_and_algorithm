@@ -1,0 +1,33 @@
+"""
+归并排序算法：时间复杂度：O(nlogn) 空间复杂度：（N）
+"""
+
+
+class MergeSort:
+    def merge_sort(self, nums: list):
+        if len(nums) <= 1:
+            print(nums)
+            return nums
+        mid = len(nums) // 2
+        left_nums = nums[:mid]
+        right_nums = nums[mid:]
+
+        left_nums = self.merge_sort(left_nums)
+        right_nums = self.merge_sort(right_nums)
+
+        res = []
+        i = j = 0
+        while i < len(left_nums) and j < len(right_nums):
+            if left_nums[i] < right_nums[j]:
+                res.append(left_nums[i])
+                i += 1
+            else:
+                res.append(right_nums[j])
+                j += 1
+        res.extend(left_nums[i:])
+        res.extend(right_nums[j:])
+        return res
+
+
+s = MergeSort()
+print(s.merge_sort([5, 1, 3, 7, 2, 4]))
