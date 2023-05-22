@@ -1,5 +1,5 @@
 class Dijkstra:
-    def dijstra(self, start: str, g: dict) -> dict:
+    def dijkstra(self, start: str, g: dict) -> dict:
         """
         :param start: Node(str)
         :param g:Graph(dict)
