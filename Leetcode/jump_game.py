@@ -1,3 +1,6 @@
+"""
+给定一个数组，其下标对应位置为其最多能往后跳跃的步数
+"""
 def can_jump(nums):
     # 记录当前能够跳到的最远位置
     max_jump = 0
@@ -13,6 +16,7 @@ def can_jump(nums):
             return True
     # 遍历完整个数组后仍未达到最后一位，返回False
     return False
+
 
 # 测试
 nums = [2, 3, 1, 1, 4]

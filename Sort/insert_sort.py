@@ -8,10 +8,10 @@ class InsertSort:
     @classmethod
     def insert_sort(cls, array):
         for i in range(1, len(array)):
-            for j in range(i-1, -1, -1):
+            for j in range(i-1, -1, -1):  # 从i-1位置倒序，终点为0，步长为-1
                 if array[j] > array[j+1]:
                     array[j], array[j+1] = array[j+1], array[j]
-                else:
+                else:  # 只要j位置的数字小于等于j+1位置的数字，直接退出当前循环，进入下一循环
                     break
         return array
 
