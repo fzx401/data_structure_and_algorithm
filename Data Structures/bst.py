@@ -36,6 +36,8 @@ class Node:
             return self
 
         if data < self.data:
+            #  每次删除时实际上都是一次搜索
+            #  从根节点开始比较大小
             self.left = self.left.delete(data)
         elif data > self.data:
             self.right = self.right.delete(data)
@@ -54,6 +56,7 @@ class Node:
         return self
 
     def minimum(self):
+        #  直到找到没有左子树的节点为止，直接返回
         if self.left is None:
             return self
         return self.left.minimum()
