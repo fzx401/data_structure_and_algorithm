@@ -6,7 +6,6 @@
 class MergeSort:
     def merge_sort(self, nums: list):
         if len(nums) <= 1:
-            print(nums)
             return nums
         mid = len(nums) // 2
         left_nums = nums[:mid]
@@ -17,7 +16,7 @@ class MergeSort:
 
         res = []
         i = j = 0
-        while i < len(left_nums) and j < len(right_nums):
+        while i < len(left_nums) and j < len(right_nums):  # 实际上while中这两个条件只会有一个成立
             if left_nums[i] < right_nums[j]:
                 res.append(left_nums[i])
                 i += 1

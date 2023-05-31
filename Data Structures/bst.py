@@ -36,7 +36,7 @@ class Node:
             return self
 
         if data < self.data:
-            #  每次删除时实际上都是一次搜索
+            #  每次删除实际上都是一次搜索
             #  从根节点开始比较大小
             self.left = self.left.delete(data)
         elif data > self.data:
@@ -84,8 +84,10 @@ class Node:
     def inorder_traversal(self, root):
         res = []
         if root:
+            #  先对左子树递归遍历
             res = self.inorder_traversal(root.left)
             res.append(root.data)
+            #  再对右子树递归遍历
             res = res + self.inorder_traversal(root.right)
         return res
 
