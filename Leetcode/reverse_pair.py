@@ -1,21 +1,16 @@
 class ReversePair:
-    def __init__(self):
-        self.reverse_pair_count = 0
-
     def reverse_pair(self, nums):
         if len(nums) <= 1:
-            return nums
+            return nums, 0
         mid = len(nums) // 2
-        left = nums[:mid]
-        right = nums[mid:]
-
-        left = self.reverse_pair(left)
-        right = self.reverse_pair(right)
+        left, left_count = self.reverse_pair(nums[:mid])
+        right, right_count = self.reverse_pair(nums[mid:])
 
         i, j, res = 0, 0, []
+        count = left_count + right_count
         while i < len(left) and j < len(right):
             if left[i] > right[j]:
-                self.reverse_pair_count += len(right) - j
+                count += len(right) - j
                 res.append(right[j])
                 j += 1
             else:
@@ -23,9 +18,11 @@ class ReversePair:
                 i += 1
         res.extend(left[i:])
         res.extend(right[j:])
-        return res
+        return res, count
 
 s = ReversePair()
-arr = [7,5,6,4]
-s.reverse_pair(arr)
-print(s.reverse_pair_count)
+arr = [7, 5, 6, 4]
+_, reverse_pair_count = s.reverse_pair(arr)
+print(reverse_pair_count)
+
+
