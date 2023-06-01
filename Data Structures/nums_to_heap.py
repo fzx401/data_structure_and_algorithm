@@ -3,8 +3,8 @@ def nums_to_maxheap(nums):
     while i < len(nums):
         if nums[i] > nums[int((i-1)/2)]:
             tmp = nums[i]
-            nums[i] = nums[(i - 1) // 2]
-            nums[(i - 1) // 2] = tmp
+            nums[i] = nums[int((i-1)/2)]
+            nums[int((i-1)/2)] = tmp
         i += 1
     return nums
 
