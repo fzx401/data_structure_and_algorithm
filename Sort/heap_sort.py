@@ -18,14 +18,22 @@ def heapify(arr, n, i):
         # 对交换后的子树递归进行堆化操作
         heapify(arr, n, largest)
 
+def nums_to_maxheap(nums):
+    for i in range(len(nums)):
+        #  将给定数组逐个和其父节点相比，如果比父节点大，则持续向上走
+        while nums[i] > nums[int((i-1/2))]:
+            tmp = nums[i]
+            nums[i] = nums[int((i-1)/2)]
+            nums[int((i-1)/2)] = tmp
+            i = int((i-1)/2)
 
 def heap_sort(arr):
     n = len(arr)
-
     # 构建最大堆，从最后一个非叶节点开始进行堆化操作
-    for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
-
+    # for i in range(n // 2 - 1, -1, -1):
+    #     heapify(arr, n, i)
+    #  构建最大堆
+    nums_to_maxheap(arr)
     # 逐个将堆顶元素（最大值）与当前未排序部分的末尾元素交换，并对剩余元素进行堆化操作
     for i in range(n - 1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # 交换堆顶元素与末尾元素
