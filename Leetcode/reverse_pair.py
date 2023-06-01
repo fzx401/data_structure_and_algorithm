@@ -1,28 +1,32 @@
-class ReversePair:
-    def reverse_pair(self, nums):
+class Solution:
+    def reversePairs(self, nums):
+        self.count = 0
+        self.merge_sort_count(nums)
+        return self.count
+
+    def merge_sort_count(self, nums):
         if len(nums) <= 1:
             return nums, 0
         mid = len(nums) // 2
-        left, left_count = self.reverse_pair(nums[:mid])
-        right, right_count = self.reverse_pair(nums[mid:])
+        left = nums[:mid]
+        right = nums[mid:]
+        left, cnt = self.merge_sort_count(left)
+        right, cnt = self.merge_sort_count(right)
 
-        i, j, res = 0, 0, []
-        count = left_count + right_count
+        res, i, j = [], 0, 0
         while i < len(left) and j < len(right):
             if left[i] > right[j]:
-                count += len(right) - j
+                self.count += len(left) - i
                 res.append(right[j])
                 j += 1
             else:
                 res.append(left[i])
                 i += 1
-        res.extend(left[i:])
-        res.extend(right[j:])
-        return res, count
+        if i < len(left):
+            res.extend(left[i:])
+        else:
+            res.extend(right[j:])
+        return res, self.count
 
-s = ReversePair()
-arr = [7, 5, 6, 4]
-_, reverse_pair_count = s.reverse_pair(arr)
-print(reverse_pair_count)
-
-
+s = Solution()
+print(s.reversePairs([7, 5, 6, 4]))
