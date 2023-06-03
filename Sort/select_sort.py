@@ -8,6 +8,7 @@ class SelectSort:
     @staticmethod
     def select_sort(array):
         for i in range(len(array) - 1):
+            #  和冒泡排序一样，一次确定一个值摆放的位置，一共确定n-1轮
             min_vaule = array[i]
             for j in range(i + 1, len(array)):
                 if array[j] < min_vaule:
