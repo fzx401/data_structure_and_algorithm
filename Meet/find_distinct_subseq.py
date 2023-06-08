@@ -1,15 +1,27 @@
 def find_subsequences(nums):
     results = []
-    dfs(nums, [], 0, results)
+    backtrack(nums, [], 0, results)
     return results
 
-def dfs(nums, current, index, results):
-    results.append(current[:])
+def backtrack(nums, current, index, results):
+    # 将当前结果加入到最终结果中
+    if len(current) >= 2:
+        results.append(current[:])
+
+    # 回溯的主要逻辑
+    used = set()  # 用于记录当前层已经使用过的元素
     for i in range(index, len(nums)):
+        if nums[i] in used:
+            continue
+
+        # 选择当前元素
         current.append(nums[i])
-        dfs(nums, current, i + 1, results)
+        used.add(nums[i])
+
+        # 继续探索下一层
+        backtrack(nums, current, i + 1, results)
+
+        # 撤销选择
         current.pop()
 
-
-nums = [1, 2, 3, 4]
-print(find_subsequences(nums))
+print(find_subsequences([1, 2, 3, 4]))
