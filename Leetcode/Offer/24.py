@@ -30,8 +30,23 @@ class Solution:
         return pre
 
 
+
+
 from DataStructures.generate_link_list import generate_link_list
 
 l = generate_link_list([1, 2, 3, 4, 5])
 s = Solution()
+print(s.reverseList(l))
+#  方法2：递归
+class Solution2(Solution):
+    def reverseList(self, head: ListNode):
+        if not head or not head.next:
+            return head
+        newhead = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return newhead
+l = generate_link_list([1, 2, 3, 4, 5])
+s = Solution2()
+res = s.reverseList(l)
 print(s.reverseList(l))
