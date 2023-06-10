@@ -7,22 +7,28 @@
 更新pre为cur
 令cur指向tmp
 """
+
+
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     def reverseList(self, head: ListNode):
         pre = None
         cur = head
         while cur:
-            tmp = cur.next
-            cur.next = pre
-            #  以上两步完成后，cur本体不变，将原本的cur.next储存起来，然后用pre更新cur.next
-            pre = cur
+            #  设置tmp的原因：cur节点的next指针即将与原本链表连接断开
+            #  设置tmp只是为了保留cur的下个节点的信息
+            tmp = cur.next  # 打断当前节点与next节点之间的连接
+            cur.next = pre  # 翻转指针
+            pre = cur  # 每当当前指针进入到新的链表中之后，就将其赋给pre指针（因此当cur为None的时候，pre指向的就是新链表的最后一个节点）
+            #  以上三步为一块
             cur = tmp
         return pre
+
 
 from DataStructures.generate_link_list import generate_link_list
 
