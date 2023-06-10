@@ -3,6 +3,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+#  生成链表的重点在于维护两个指针，一个是cur代表当前节点，另一个head代表头节点
 def generate_link_list(nums:list):
     i = 1
     cur = ListNode(nums[0])
