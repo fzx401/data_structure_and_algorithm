@@ -19,6 +19,7 @@ class CQueue:
             self._exchange(self.stack2, self.stack1)
             self.stack1.append(value)
 
+
     def deleteHead(self) -> int:
         """
         每次删除完head之后都要恢复stack1
