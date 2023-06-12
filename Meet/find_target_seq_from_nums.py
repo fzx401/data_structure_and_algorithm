@@ -1,4 +1,5 @@
 from find_distinct_subseq import find_subsequences
+import time
 
 def find(nums, target):
     total = find_subsequences(nums)
@@ -11,4 +12,7 @@ def find(nums, target):
 
 nums = [1, 2, 3, 4, 6]
 target = 13
+start_time = time.time()
 print(find(nums, target))
+end_time = time.time()
+print(end_time-start_time)
