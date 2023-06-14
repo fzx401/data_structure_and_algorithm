@@ -24,4 +24,4 @@ def backtrack(nums, current, index, results):
         # 撤销选择
         current.pop()
 
-print(find_subsequences([1, 2, 2, 4]))
+print(find_subsequences([1, 2, 3, 4]))
