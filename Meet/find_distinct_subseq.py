@@ -11,6 +11,9 @@ def backtrack(nums, current, index, results):
     # 回溯的主要逻辑
     used = set()  # 用于记录当前层已经使用过的元素
     for i in range(index, len(nums)):
+        """
+        值得注意的是，无论什么类型的回溯法，终止条件都很重要
+        """
         if nums[i] in used:
             continue
 
