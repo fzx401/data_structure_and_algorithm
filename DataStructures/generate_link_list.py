@@ -1,23 +1,22 @@
-class ListNode:
-    def __init__(self, x):
-        self.val = x
+"""
+Step1：构建头节点，将cur指向当前节点
+Step2：令cur.next指向数组中下一个数构造的Node
+Step3：令cur指向cur.next
+"""
+class LinkNode:
+    def __init__(self, value):
+        self.value = value
         self.next = None
-
-#  生成链表的重点在于维护两个指针，一个是cur代表当前节点，另一个head代表头节点
-def generate_link_list(nums:list):
-    i = 1
-    cur = ListNode(nums[0])
-    head = cur
-    while i < len(nums):
-        cur.next = ListNode(nums[i])
-        # print('cur_before')
-        # print(id(cur))
-        # print('head_before')
-        # print(id(head))
-        cur = cur.next  # 在此时cur已经变成了一个新变量
-        # print('cur_after')
-        # print(id(cur))
-        # print('head_after')
-        # print(id(head))
-        i += 1
+def generate_link_list(nums: list):
+    nums = nums[::-1]
+    head = LinkNode(nums.pop())
+    cur = head
+    while nums:
+        tmp = LinkNode(nums.pop())
+        cur.next = tmp
+        cur = tmp
     return head
+
+nums = [1, 2, 3, 4, 5]
+h = generate_link_list(nums)
+pass
