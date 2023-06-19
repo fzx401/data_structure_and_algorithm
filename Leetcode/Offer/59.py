@@ -1,33 +1,20 @@
-import queue
 from collections import deque
-class MaxQueue:
-    def __init__(self):
-        self.queue = queue.Queue()
-        self.deque = deque()
-    def push_back(self, value: int):
-        """
-        保证deque单调递减
-        :param value:
-        :return:
-        """
-        while self.deque and self.deque[-1] < value:
-            self.deque.pop()
-        self.queue.put(value)
-        self.deque.append(value)
-    def pop_front(self):
-        if self.queue.empty():
-            return -1
-        res = self.queue.get()  # 注意不要轻易执行get方法
-        if res == self.deque[0]:
-            self.deque.popleft()
-        return res
-    def max_value(self):
-        if not self.deque:
-            return -1
-        return self.deque[0]
 
-q = MaxQueue()
-q.push_back(1)
-q.push_back(2)
-q.max_value()
-q.pop_front()
+class Solution:
+    def maxSlidingWindow(self, nums, k):
+        res = []
+        q = deque()
+        for i in range(len(nums)):
+            #  队列中有数才会开始和当前遍历到的数值比较
+            while q and nums[i] >= nums[q[-1]]:
+                q.pop()
+            while q and q[0] <= i - k:  # 当队首存储的下标(默认是当前窗口的最大值)已经在window的左侧时，将其弹出
+                q.popleft()
+            q.append(i)
+            if i >= k - 1:
+                res.append(nums[q[0]])
+        return res
+
+nums = [1, 3, 1, 2, 0, 5]
+s = Solution()
+print(s.maxSlidingWindow(nums, 3))
