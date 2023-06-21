@@ -1,14 +1,14 @@
 """广度优先搜索用队列数据结构实现"""
 from queue import Queue
-
-def bfs(start_node, target,  graph):
+"""一层一层，抽丝剥茧"""
+def bfs(start_node, target, graph):
     #  创建队列
     q = Queue()
     nodes = list(graph.keys())
     #  创建已访问字典，该字典同时记录了搜索到的节点之间的前序后续信息
     prev = {start_node: None}
     q.put(start_node)
-    while not q.empty():
+    while not q.empty(): # 记录有没有把相邻的数遍历完
         explore_node = q.get()
         if explore_node == target:
             path = []
