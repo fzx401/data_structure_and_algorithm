@@ -12,6 +12,11 @@ def heapify(arr, n, i):
         largest = right
 
     # 如果最大元素的索引不是父节点 i，则交换父节点与最大元素
+    """
+    为什么这里能够保证当前子树的最大值节点保持在父节点就不用再往下了？
+    因为我们在建立最大堆的时候，是从最后一个非叶子节点出发开始创建的,当前子树的后序子树们都已经保证了最大堆
+    如果当前子树的左右节点都比当前的根节点小，那么根节点一定大于所有的后序子节点
+    """
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]
 
@@ -30,10 +35,10 @@ def nums_to_maxheap(nums):
 def heap_sort(arr):
     n = len(arr)
     # 构建最大堆，从最后一个非叶节点开始进行堆化操作
-    # for i in range(n // 2 - 1, -1, -1):
-    #     heapify(arr, n, i)
-    #  构建最大堆
-    nums_to_maxheap(arr)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # nums_to_maxheap(arr)
     # 逐个将堆顶元素（最大值）与当前未排序部分的末尾元素交换，并对剩余元素进行堆化操作
     for i in range(n - 1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # 交换堆顶元素与末尾元素
