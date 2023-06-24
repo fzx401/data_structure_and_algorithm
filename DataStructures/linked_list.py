@@ -5,8 +5,20 @@ class Node:
 
 
 class LinkList:
-    def __init__(self):
-        self.head = None
+    def __init__(self, nums: list):
+        self.head = self._convert_nums_to_linklist(nums)
+
+    def _convert_nums_to_linklist(self, nums: list):
+        if not nums:
+            raise ValueError("数组为空")
+        nums = nums[::-1]
+        head = Node(nums.pop())
+        cur = head
+        while nums:  # 表面上操作的是cur，实际上是Node
+            tmp = Node(nums.pop())
+            cur.next = tmp
+            cur = tmp
+        return head
 
     def is_empty(self):
         return self.head is None
@@ -17,8 +29,8 @@ class LinkList:
             self.head = new_node
         else:
             new_node = Node(data)
-            new_node.next = self.head
-            self.head = new_node
+            new_node.next = self.head  # 先将当前data的next指针指向已有链表的头节点
+            self.head = new_node  # 然后将head指针指向新链表整体
 
     def insert_at_end(self, data):
         if self.is_empty():
@@ -51,7 +63,7 @@ class LinkList:
             while current.next and count < index:
                 count += 1
                 current = current.next
-            return current
+            return current.data
 
     def insert_at_index(self, data, index):
         if self.is_empty():
@@ -67,10 +79,6 @@ class LinkList:
             pre.next = new_node
 
 
-
-mylinklist = LinkList()
-
-for i in range(100):
-    mylinklist.insert_at_beginning(i + 1)
-mylinklist.insert_at_index(10000, 10)
-print(mylinklist[10].data)
+mylinklist = LinkList([1, 2, 3, 4, 5])
+mylinklist.insert_at_index(6, 0)
+print(mylinklist[3])
