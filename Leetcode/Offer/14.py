@@ -10,7 +10,9 @@ class Solution:
             for j in range(2, i):
                 # 内层max中第一项：如果分成j和i-j，i-j不接着分的结果
                 # 内层max中第二项：如果分成j和i-j，i-j接着去分
-                dp[i] = max(dp[i], max(j * (i - j), j * dp[i - j]))
+                tmp1 = j * (i - j)
+                tmp2 = j * dp[i - j]
+                dp[i] = max(dp[i], max(tmp1, tmp2))
         return dp[n]
 
 
