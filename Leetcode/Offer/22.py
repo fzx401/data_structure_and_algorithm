@@ -19,3 +19,4 @@ if __name__ == '__main__':
     s = Solution()
     res = s.getKthFromEnd(test_linklist.head, 1)
     pass
+    print()
