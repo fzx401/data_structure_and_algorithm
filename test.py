@@ -168,5 +168,3 @@ if __name__ == '__main__':
         'G': []
     }
     print(dfs(graph, start='A', target='F'))
-
-#  这是小米公司的电脑
