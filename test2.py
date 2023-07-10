@@ -28,3 +28,4 @@ def heap_sort(nums):
 arr = [4, 2, 5, 7, 3, 6, 8]
 heap_sort(arr)
 print(arr)
+print('fuck')
